@@ -30,7 +30,7 @@ public:
 //!    добавляет дробно-рациональную функцию в список
 //!    либо если список пуст создает его
 //!
-    void addElement(Function *function);
+    void addElement(const Function *function);
 //!
 //!    удаляет элемент списка(пока юзлес)
 //!
@@ -53,7 +53,7 @@ private:
 //!
 //!     создаёт первый элемент(корень) списка
 //!
-    void init(Function *function);
+    void init(const Function *function);
 };
 
 

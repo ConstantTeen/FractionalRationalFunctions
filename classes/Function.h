@@ -26,7 +26,11 @@ public:
 //!
 //!    создаёт и возвращает копию объекта
 //!
-    virtual Function* clone() = 0;
+    virtual Function* clone() const = 0;
+//!
+//!    присваиваие запрещено
+//!
+    Function& operator=(Function const&) = delete;
 };
 
 

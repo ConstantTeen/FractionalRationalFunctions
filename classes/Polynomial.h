@@ -22,7 +22,7 @@ private:
 
 public:
     Polynomial(const double *coefficients, unsigned int degree);
-    Polynomial(Polynomial&);
+    Polynomial(const Polynomial&);
     ~Polynomial()override;
 //!
 //!    возвращает степень полинома
@@ -54,7 +54,7 @@ public:
 //!
 //!    создаёт и возвращает копию объекта
 //!
-    Polynomial* clone() override;
+    Polynomial* clone() const override;
 //!
 //!    сравнение полиномов
 //!

@@ -19,7 +19,7 @@ Pool::~Pool(){
     }while(m != root);
 }
 
-void Pool::init(Function *function){
+void Pool::init(const Function *function){
 //!
 //!    создание корневого элемента списка
 //!    присвоение индекса функции function
@@ -30,7 +30,7 @@ void Pool::init(Function *function){
     root->index = counter++;
 }
 
-void Pool::addElement(Function *function){
+void Pool::addElement(const Function *function){
 //!
 //!    в случае, если в хранилище нет элементов,
 //!    передаю работу функции init()

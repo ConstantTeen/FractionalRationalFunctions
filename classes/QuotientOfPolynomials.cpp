@@ -6,7 +6,7 @@
 #include <iostream>
 using namespace std;
 
-QuotientOfPolynomials::QuotientOfPolynomials(QuotientOfPolynomials& q){
+QuotientOfPolynomials::QuotientOfPolynomials(const QuotientOfPolynomials& q){
     this->numerator = new Polynomial(*q.numerator);
     this->denominator = new Polynomial(*q.denominator);
 }
@@ -78,6 +78,6 @@ bool QuotientOfPolynomials::operator!=(QuotientOfPolynomials const&q){
     return !( *this == q );
 }
 
-QuotientOfPolynomials* QuotientOfPolynomials::clone(){
+QuotientOfPolynomials* QuotientOfPolynomials::clone() const{
     return new QuotientOfPolynomials(*this);
 }

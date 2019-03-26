@@ -11,7 +11,7 @@ using namespace std;
 //!
 //! копирующий конструктор
 //!
-Polynomial::Polynomial(Polynomial& p){
+Polynomial::Polynomial(const Polynomial& p){
     coefficients = new double[p.degree + 1];
 
     for(unsigned int i = 0; i <= p.degree; i++){
@@ -147,6 +147,6 @@ bool Polynomial::operator==(Polynomial const & p) {
     return !(*this != p);
 }
 
-Polynomial* Polynomial::clone() {
+Polynomial* Polynomial::clone() const {
     return new Polynomial(*this);
 }

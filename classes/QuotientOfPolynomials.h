@@ -14,7 +14,7 @@ public:
 //!
 //!    копирующий конструктор
 //!
-    QuotientOfPolynomials(QuotientOfPolynomials&);
+    QuotientOfPolynomials(const QuotientOfPolynomials&);
 //!
 //!    обычный конструктор
 //!
@@ -38,7 +38,7 @@ public:
 //!
 //!    создаёт и возвращает копию объекта
 //!
-    QuotientOfPolynomials* clone() override;
+    QuotientOfPolynomials* clone() const override;
 //!
 //!    сравнение
 //!
