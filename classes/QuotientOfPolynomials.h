@@ -28,7 +28,8 @@ public:
     double getFunctionValue(double x, int &errorCode) override;
 //!
 //!    кладет в str строковое представление функции.
-//!    возвращает 0
+//!    возвращает 0 в случае успешного завершения и
+//!    и 1 в случае ошибки
 //!
     int getFunctionAppearance(string &str) override;
 //!

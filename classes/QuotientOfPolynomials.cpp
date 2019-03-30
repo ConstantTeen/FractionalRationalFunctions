@@ -39,8 +39,10 @@ double QuotientOfPolynomials::getFunctionValue(double x, int &errorCode){
 int QuotientOfPolynomials::getFunctionAppearance(string & buffer){
     string numString;
     string denString;
-    numerator->getFunctionAppearance(numString);
-    denominator->getFunctionAppearance(denString);
+//!
+//!    вызов фунций с проверкой того обе ли функции возвратили 0
+//!
+    if(numerator->getFunctionAppearance(numString) + denominator->getFunctionAppearance(denString) != 0) return 1;
 
     if(denString == "0") {
         buffer = "infinity";

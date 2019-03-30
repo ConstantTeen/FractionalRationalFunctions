@@ -5,7 +5,9 @@
 #ifndef UNTITLED_POLYNOMIAL_H
 #define UNTITLED_POLYNOMIAL_H
 
-
+#include <iostream>
+#include <stdexcept>
+#include <math.h>
 #include "Function.h"
 #include <math.h>
 

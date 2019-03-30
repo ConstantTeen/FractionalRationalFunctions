@@ -1,11 +1,8 @@
 //
 // Created by konstantin on 10.02.19.
 //
-
 #include "Polynomial.h"
-#include <iostream>
-#include <stdexcept>
-#include <math.h>
+
 using namespace std;
 
 //!
@@ -86,12 +83,12 @@ int Polynomial::getFunctionAppearance(string &buffer){
 //!
     buffer = "";
 
-    if(i == 0) buffer+= to_string( round( coefficients[i] ) );
-    else buffer+= to_string( round( coefficients[i] ) ) + "x^" + to_string(i);
+    if(i == 0) buffer+= to_string( (int)round( coefficients[i] ) );
+    else buffer+= to_string( (int)round(coefficients[i]) ) + "x^" + to_string(i);
 
-    for(unsigned int j = i + 1; j <= degree; j++){
-        if(coefficients[j] < 0) buffer += " - " + to_string( round( -coefficients[j] ) ) + "x^" + to_string(j);
-        else if(coefficients[j] > 0) buffer += " + " + to_string( round( coefficients[j] ) ) + "x^" + to_string(j);
+    for(auto j = i + 1; j <= degree; j++){
+        if(coefficients[j] < 0) buffer += " - " + to_string( (int)round( -coefficients[j] ) ) + "x^" + to_string(j);
+        else if(coefficients[j] > 0) buffer += " + " + to_string( (int)round( coefficients[j] ) ) + "x^" + to_string(j);
     }
 
     return 0;
