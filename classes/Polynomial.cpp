@@ -2,6 +2,8 @@
 // Created by konstantin on 10.02.19.
 //
 #include "Polynomial.h"
+#include <iomanip> // setprecision
+#include <sstream> // stringstream
 
 using namespace std;
 
@@ -64,6 +66,18 @@ double Polynomial::operator[](unsigned int monomialDegree){
 
     return coefficients[monomialDegree];
 };
+//!
+//!    функция для округления числа типа double до фиксированного числа знаков после запятой acc
+//!    параметры: число типа double, число знаков после запятой
+//!    если фукнция вызывается без второго аргументов, то число по умолчанию округляется
+//!    до второго знака после запятой
+//!
+string myRound(double d, const unsigned int acc = 2){
+    stringstream stream;
+    stream << fixed << setprecision(acc) << d;
+
+    return stream.str();
+}
 
 int Polynomial::getFunctionAppearance(string &buffer){
 //!
@@ -83,12 +97,12 @@ int Polynomial::getFunctionAppearance(string &buffer){
 //!
     buffer = "";
 
-    if(i == 0) buffer+= to_string( (int)round( coefficients[i] ) );
-    else buffer+= to_string( (int)round(coefficients[i]) ) + "x^" + to_string(i);
+    if(i == 0) buffer+= myRound(coefficients[i]);
+    else buffer+= myRound(coefficients[i]) + "x^" + to_string(i);
 
     for(auto j = i + 1; j <= degree; j++){
-        if(coefficients[j] < 0) buffer += " - " + to_string( (int)round( -coefficients[j] ) ) + "x^" + to_string(j);
-        else if(coefficients[j] > 0) buffer += " + " + to_string( (int)round( coefficients[j] ) ) + "x^" + to_string(j);
+        if(coefficients[j] < 0) buffer += " - " + myRound(-coefficients[j]) + "x^" + to_string(j);
+        else if(coefficients[j] > 0) buffer += " + " + myRound(coefficients[j]) + "x^" + to_string(j);
     }
 
     return 0;
