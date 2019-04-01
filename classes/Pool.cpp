@@ -125,6 +125,10 @@ double Pool::findValue(double x, int functionIndex, int& errorCode){
 };
 
 void Pool::showEverything(){
+    if(root == nullptr){
+        cout << endl << "----The list is empty----" << endl << endl;
+        return;
+    }
 //!
 //!    обход списка с помощью вспомогательного
 //!    указателя на структуру m
@@ -150,16 +154,23 @@ void Pool::showEverything(){
 }
 
 void Pool::undefinedFunctionsSet(double x){
+    if(root == nullptr){
+        cout << endl << "----The list is empty----" << endl << endl;
+        return;
+    }
+
     cout << endl << "----All functions undefined in " << x << "----" << endl << endl;
 
     struct list *m = root;
     int errorCode = 0;
     string str;
+    bool flag = false;
 
     do{
         m->function->getFunctionValue(x,errorCode);
 
         if(errorCode == 1){
+            flag = true;
             m->function->getFunctionAppearance(str);
 
             cout << "Index: " << m->index << endl;
@@ -168,6 +179,8 @@ void Pool::undefinedFunctionsSet(double x){
 
         m = m->next;
     }while(m != root);
+
+    if(!flag) cout << endl << "    There are no such functions    " << endl << endl;
 
     cout << endl << "----The end----" << endl;
 }
