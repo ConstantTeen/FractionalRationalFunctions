@@ -24,7 +24,7 @@ QuotientOfPolynomials::~QuotientOfPolynomials(){
 //!    если функция не определена в точке х, возвращается -123(мусор) и errorCode = 1
 //!    иначе возвращается значение функции в точке х и errorCode = 0
 //!
-double QuotientOfPolynomials::getFunctionValue(double x, int &errorCode){
+double QuotientOfPolynomials::getFunctionValue(double x, int &errorCode)const{
     double numeratorValue = (*numerator)(x);
     double denominatorValue = (*denominator)(x);
 
@@ -36,7 +36,7 @@ double QuotientOfPolynomials::getFunctionValue(double x, int &errorCode){
     return numeratorValue/denominatorValue;
 };
 
-int QuotientOfPolynomials::getFunctionAppearance(string & buffer){
+int QuotientOfPolynomials::getFunctionAppearance(string & buffer)const{
     string numString;
     string denString;
 //!

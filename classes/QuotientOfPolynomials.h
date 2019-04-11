@@ -25,13 +25,13 @@ public:
 //!    если функция в данной точке неопределена,
 //!    errorCode = 1(иначе = 0).
 //!
-    double getFunctionValue(double x, int &errorCode) override;
+    double getFunctionValue(double x, int &errorCode)const override;
 //!
 //!    кладет в str строковое представление функции.
 //!    возвращает 0 в случае успешного завершения и
 //!    и 1 в случае ошибки
 //!
-    int getFunctionAppearance(string &str) override;
+    int getFunctionAppearance(string &str)const override;
 //!
 //!    присваивание
 //!

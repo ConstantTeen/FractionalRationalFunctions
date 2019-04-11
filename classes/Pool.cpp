@@ -54,7 +54,7 @@ void Pool::addElement(const Function *function){
     newElement->next = m;
 }
 
-int Pool::deleteElement(const int index){
+int Pool::deleteElement(const unsigned int index){
 //!     если нужно удалить последний оставшийся элемент списка
     if(root->next == root && root->index == index) {
         counter = 1;
@@ -84,7 +84,7 @@ int Pool::deleteElement(const int index){
     return 1;
 }
 
-double Pool::findValue(double x, int functionIndex, int& errorCode){
+double Pool::findValue(double x, unsigned int functionIndex, int& errorCode){
 //!
 //!   функции с данным индексом нет
 //!
@@ -96,20 +96,17 @@ double Pool::findValue(double x, int functionIndex, int& errorCode){
     struct list *m = root;
     double value = 0;
     Function *currentFunction;
-    int currentIndex;
+    unsigned int currentIndex;
 
     do{
         currentFunction = m->function;
         currentIndex = m->index;
 
         if(currentIndex == functionIndex){
-
             value = currentFunction->getFunctionValue(x,errorCode);
 
-            if(errorCode == 1){
-                //! функция не определена
-                return -123;
-            }
+            //! если функция не определена
+            if(errorCode == 1) return -123;
 
             return value;
         }
@@ -137,7 +134,7 @@ void Pool::showEverything(){
     cout << endl << "----All list of functions----" << endl << endl;
 
     struct list *m = root;
-    int index = m->index;
+    auto index = m->index;
     string str;
 
     do{

@@ -17,12 +17,12 @@ public:
 //!    присваивает errorCode 1
 //!    иначе 0
 //!
-    virtual double getFunctionValue(double x, int &errorCode) = 0;
+    virtual double getFunctionValue(double x, int &errorCode) const = 0;
 //!
 //!    служит для преобразования функции в строку для последующего вывода
 //!    возвращает 0 в случае успеха и 1, если знаменатель тождественно = 0
 //!
-    virtual int getFunctionAppearance(string &) = 0;
+    virtual int getFunctionAppearance(string &) const = 0;
 //!
 //!    создаёт и возвращает копию объекта
 //!

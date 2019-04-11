@@ -14,7 +14,7 @@
 //!   дробно-рациональные функции
 //!
 struct list{
-    int index;
+    unsigned int index;
     Function *function;
     struct list *next;
 };
@@ -32,14 +32,16 @@ public:
 //!
     void addElement(const Function *function);
 //!
-//!    удаляет элемент списка(пока юзлес)
+//!    удаляет элемент списка
+//!    возвращает 0 при успешном удалении
+//!    и 1, если функции с таким инексом нет в списке
 //!
-    int deleteElement(int index);
+    int deleteElement(unsigned int index);
 //!
 //!    находит значение функции
 //!    с индексом functionIndex в точке х
 //!
-    double findValue(double x, int functionIndex, int& errorCode);
+    double findValue(double x, unsigned int functionIndex, int& errorCode);
 //!
 //!    выводит индексы всех функций в хранилище
 //!    не определенных в точке х
@@ -48,7 +50,7 @@ public:
 
 
 private:
-    int counter = 1;//! хранит последний индекс
+    unsigned int counter = 1;//! хранит последний индекс
     struct list *root = nullptr;//! указатель на корневой элемент списка
 //!
 //!     создаёт первый элемент(корень) списка

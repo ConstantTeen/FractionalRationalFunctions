@@ -42,7 +42,7 @@ Polynomial::~Polynomial(){
 //!
 //!     нахожу значение многочлена по методу Горнера
 //!
-double Polynomial::operator()(double x){
+double Polynomial::operator()(double x)const{
     double a = coefficients[degree];
     double b = a;
     unsigned int i = degree;
@@ -59,7 +59,7 @@ double Polynomial::operator()(double x){
 //!    поэтому при невалидных monomialDegree (больших степени многочлена)
 //!    возвращается ноль. Таким образом нежелательные мономы "не имеют веса".
 //!
-double Polynomial::operator[](unsigned int monomialDegree){
+double Polynomial::operator[](unsigned int monomialDegree)const{
     if( monomialDegree > degree) {
         return 0;
     }
@@ -79,7 +79,7 @@ string myRound(double d, const unsigned int acc = 2){
     return stream.str();
 }
 
-int Polynomial::getFunctionAppearance(string &buffer){
+int Polynomial::getFunctionAppearance(string &buffer)const{
 //!
 //!    ищу первый не нулевой коэффициент
 //!

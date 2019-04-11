@@ -34,21 +34,21 @@ public:
 //!    перегруженный оператор () служит для нахождения
 //!    значения полинома в точке
 //!
-    double operator()(double x);
+    double operator()(double x)const;
 //!
 //!    перегруженный оператор [] возвращает
 //!    коэффициент при мономе степени monomialDegree
 //!
-    double operator[](unsigned int monomialDegree);
+    double operator[](unsigned int monomialDegree)const;
 //!
 //!    ищет значение полинома в точке x
 //!
-    inline double getFunctionValue(double x, int& ) override { return (*this)(x); }
+    inline double getFunctionValue(double x, int& ) const override { return (*this)(x); }
 //!
 //!    кладет в buffer строку с явным видом полинома
 //!    и возвращает код ошибки
 //!
-    int getFunctionAppearance(string &buffer) override;
+    int getFunctionAppearance(string &buffer)const override;
 //!
 //!    присваивание полиномов
 //!
