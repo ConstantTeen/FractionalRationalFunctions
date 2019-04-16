@@ -17,7 +17,7 @@ void List::showEverything(){
     unsigned int currentIndex = 1;
     string str;
 
-    cout << endl << "----All list of functions----" << endl << endl;
+    cout << endl << "----Full list of functions----" << endl << endl;
 
     for (const auto &item : biList) {
         item->getFunctionAppearance(str);

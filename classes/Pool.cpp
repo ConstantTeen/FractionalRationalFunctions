@@ -65,23 +65,22 @@ int Pool::deleteElement(const unsigned int index){
         return 0;
     }
 
-    struct list *m = root;
-    struct list *n;
+    auto m = root;
 
-    do{
-        if(m->next->index == index){
-            n = m->next->next;
-            delete m->next->function;
-            delete m->next;
-            m->next = n;
-
-            return 0;
-        };
-
+    while(m->next->index != index){ // ищем нужный элемент
         m = m->next;
-    }while(m != root);
+        if(m == root) return 1;     // если обошёл весь список но не нашел такого индекса
+    }
 
-    return 1;
+    auto isRoot = (m->next == root);
+    auto n = m->next->next;
+
+    delete m->next->function;
+    delete m->next;
+    m->next = n;
+    if(isRoot) root = n;
+
+    return 0;
 }
 
 double Pool::findValue(double x, unsigned int functionIndex, int& errorCode){
@@ -119,7 +118,7 @@ double Pool::findValue(double x, unsigned int functionIndex, int& errorCode){
 //!
     errorCode = -1;
     return -123;
-};
+}
 
 void Pool::showEverything(){
     if(root == nullptr){
@@ -169,6 +168,7 @@ void Pool::undefinedFunctionsSet(double x){
         if(errorCode == 1){
             flag = true;
             m->function->getFunctionAppearance(str);
+            errorCode = 0;
 
             cout << "Index: " << m->index << endl;
             cout << str << endl;
