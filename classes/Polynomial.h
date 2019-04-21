@@ -5,11 +5,11 @@
 #ifndef UNTITLED_POLYNOMIAL_H
 #define UNTITLED_POLYNOMIAL_H
 
-#include <iostream>
 #include <stdexcept>
 #include <math.h>
+#include <memory>
 #include "Function.h"
-#include <math.h>
+
 
 class Polynomial: public Function{
 private:

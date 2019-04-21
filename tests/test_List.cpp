@@ -17,12 +17,13 @@ void test_List(){
     Polynomial p1(arr1,2);
     Polynomial p2(arr2,4);
     Polynomial p(arr,3);
-    QuotientOfPolynomials q(p1,p2);
-    QuotientOfPolynomials qq(p1,p);
+    Quotient q(p1,p2);
+    Quotient qq(p1,p);
     Function *fp1 = &p1;
-//    Function *fp2 = &p2;
+    Function *fp2 = &p2;
     Function *fq = &q;
     Function *fqq = &qq;
+
     List list;
 //!
 //!   добавляю элемент и проверяю добавился ли

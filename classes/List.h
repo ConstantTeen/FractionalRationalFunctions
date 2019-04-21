@@ -5,9 +5,12 @@
 #ifndef UNTITLED_LIST_H
 #define UNTITLED_LIST_H
 
-#include"Function.h"
+#include <memory>
 #include <list>
 #include <string>
+
+#include"Function.h"
+
 using namespace std;
 
 class List {
@@ -15,7 +18,7 @@ public:
 //!
 //!    добавляет дробно-рациональную функцию в список
 //!
-    void addElement(const Function *function);
+    void addElement(Function *function);
 //!
 //!   печатает весь существующий список функций
 //!
@@ -39,7 +42,7 @@ public:
     void undefinedFunctionsSet(double x);
 
 private:
-    list<const Function*> biList;
+    list< Function * > biList;
 };
 
 

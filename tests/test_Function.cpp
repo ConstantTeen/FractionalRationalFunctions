@@ -13,7 +13,7 @@ void test_Function(){
     double arr3[2] = {2,1};
     Polynomial p2(arr2, 1);
     Polynomial p3(arr3, 1);
-    QuotientOfPolynomials q(p1,p2);
+    Quotient q(p1,p2);
     Function *f;
     int errorCode = 0;
 

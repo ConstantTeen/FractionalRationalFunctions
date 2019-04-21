@@ -4,7 +4,7 @@
 
 #include "List.h"
 
-void List::addElement(const Function *function){
+void List::addElement(Function *function){
     this->biList.push_back(function);
 }
 

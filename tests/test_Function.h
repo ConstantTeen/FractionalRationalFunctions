@@ -7,7 +7,7 @@
 
 
 #include <iostream>
-#include "../classes/QuotientOfPolynomials.h"
+#include "../classes/Quotient.h"
 #include "../classes/Polynomial.h"
 #include "../classes/Function.h"
 

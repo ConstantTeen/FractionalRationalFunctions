@@ -7,7 +7,7 @@
 
 #include <iostream>
 #include "../classes/Polynomial.h"
-#include "../classes/QuotientOfPolynomials.h"
+#include "../classes/Quotient.h"
 #include "../classes/List.h"
 
 using namespace std;

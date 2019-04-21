@@ -2,29 +2,33 @@
 // Created by konstantin on 10.02.19.
 //
 
-#include "QuotientOfPolynomials.h"
+#include "Quotient.h"
 #include <iostream>
 using namespace std;
 
-QuotientOfPolynomials::QuotientOfPolynomials(const QuotientOfPolynomials& q){
-    this->numerator = new Polynomial(*q.numerator);
-    this->denominator = new Polynomial(*q.denominator);
+Quotient::Quotient(const Quotient& q){
+//    this->numerator = new Polynomial(*q.numerator);
+//    this->denominator = new Polynomial(*q.denominator);
+    this->numerator = q.numerator;
+    this->denominator = q.denominator;
 }
 
-QuotientOfPolynomials::QuotientOfPolynomials(Polynomial &numerator, Polynomial &denominator){
-    this->numerator = new Polynomial(numerator);
-    this->denominator = new Polynomial(denominator);
-};
+Quotient::Quotient(Polynomial &numerator, Polynomial &denominator){
+//    this->numerator = new Polynomial(numerator);
+//    this->denominator = new Polynomial(denominator);
+    this->numerator = make_shared<Polynomial>(numerator);
+    this->denominator = make_shared<Polynomial>(denominator);
+}
 
-QuotientOfPolynomials::~QuotientOfPolynomials(){
-    delete numerator;
-    delete denominator;
+Quotient::~Quotient(){
+//    delete numerator;
+//    delete denominator;
 }
 //!
 //!    если функция не определена в точке х, возвращается -123(мусор) и errorCode = 1
 //!    иначе возвращается значение функции в точке х и errorCode = 0
 //!
-double QuotientOfPolynomials::getFunctionValue(double x, int &errorCode)const{
+double Quotient::getFunctionValue(double x, int &errorCode)const{
     double numeratorValue = (*numerator)(x);
     double denominatorValue = (*denominator)(x);
 
@@ -36,7 +40,7 @@ double QuotientOfPolynomials::getFunctionValue(double x, int &errorCode)const{
     return numeratorValue/denominatorValue;
 };
 
-int QuotientOfPolynomials::getFunctionAppearance(string & buffer)const{
+int Quotient::getFunctionAppearance(string & buffer)const{
     string numString;
     string denString;
 //!
@@ -53,19 +57,21 @@ int QuotientOfPolynomials::getFunctionAppearance(string & buffer)const{
     return 0;
 }
 
-QuotientOfPolynomials& QuotientOfPolynomials::operator=(QuotientOfPolynomials const& q){
+Quotient& Quotient::operator=(Quotient const& q){
     if(this == &q) return *this;
-//!
-//!    здесь вызываются перегруженные операторы =()
-//!    так что присваивание безопасное
-//!
-    *numerator = *q.numerator;
-    *denominator = *q.denominator;
+////!
+////!    здесь вызываются перегруженные операторы =()
+////!    так что присваивание безопасное
+////!
+//    *numerator = *q.numerator;
+//    *denominator = *q.denominator;
+    numerator = q.numerator;
+    denominator = q.denominator;
 
     return *this;
 }
 
-bool QuotientOfPolynomials::operator==(QuotientOfPolynomials const&q){
+bool Quotient::operator==(Quotient const&q){
 //!
 //!    если числители и знаменатели совпадают,
 //!    то функции считаются одинаковыми
@@ -76,10 +82,10 @@ bool QuotientOfPolynomials::operator==(QuotientOfPolynomials const&q){
     return !( *this->denominator != *q.denominator );
 }
 
-bool QuotientOfPolynomials::operator!=(QuotientOfPolynomials const&q){
+bool Quotient::operator!=(Quotient const&q){
     return !( *this == q );
 }
 
-QuotientOfPolynomials* QuotientOfPolynomials::clone() const{
-    return new QuotientOfPolynomials(*this);
+Quotient* Quotient::clone() const{
+    return new Quotient(*this);
 }

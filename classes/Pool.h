@@ -7,7 +7,8 @@
 
 #include "Function.h"
 #include "Polynomial.h"
-#include "QuotientOfPolynomials.h"
+#include "Quotient.h"
+
 
 //!
 //!   Циклический список, содержащий указатели на

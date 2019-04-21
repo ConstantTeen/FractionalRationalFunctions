@@ -2,24 +2,24 @@
 // Created by konstantin on 10.02.19.
 //
 
-#ifndef UNTITLED_QUOTIENTOFPOLYNOMIALS_H
-#define UNTITLED_QUOTIENTOFPOLYNOMIALS_H
+#ifndef UNTITLED_QUOTIENT_H
+#define UNTITLED_QUOTIENT_H
 
 
 #include <cstdlib>
 #include "Polynomial.h"
 
-class QuotientOfPolynomials: public Function{
+class Quotient: public Function{
 public:
 //!
 //!    копирующий конструктор
 //!
-    QuotientOfPolynomials(const QuotientOfPolynomials&);
+    Quotient(const Quotient&);
 //!
 //!    обычный конструктор
 //!
-    QuotientOfPolynomials(Polynomial &numerator, Polynomial &denominator);
-    ~QuotientOfPolynomials() override;
+    Quotient(Polynomial &numerator, Polynomial &denominator);
+    ~Quotient() override;
 //!
 //!    возвращает значение функции в точке х.
 //!    если функция в данной точке неопределена,
@@ -35,21 +35,21 @@ public:
 //!
 //!    присваивание
 //!
-    QuotientOfPolynomials& operator=(QuotientOfPolynomials const&);
+    Quotient& operator=(Quotient const&);
 //!
 //!    создаёт и возвращает копию объекта
 //!
-    QuotientOfPolynomials* clone() const override;
+    Quotient* clone() const override;
 //!
 //!    сравнение
 //!
-    bool operator==(QuotientOfPolynomials const&);
-    bool operator!=(QuotientOfPolynomials const&);
+    bool operator==(Quotient const&);
+    bool operator!=(Quotient const&);
 
 private:
-    Polynomial *numerator = nullptr;
-    Polynomial *denominator = nullptr;
+    shared_ptr<Polynomial> numerator;
+    shared_ptr<Polynomial> denominator;
 };
 
 
-#endif //UNTITLED_QUOTIENTOFPOLYNOMIALS_H
+#endif //UNTITLED_QUOTIENT_H
