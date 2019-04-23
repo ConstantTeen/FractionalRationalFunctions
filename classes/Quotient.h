@@ -45,7 +45,6 @@ public:
 //!
     bool operator==(Quotient const&);
     bool operator!=(Quotient const&);
-
 private:
     shared_ptr<Polynomial> numerator;
     shared_ptr<Polynomial> denominator;

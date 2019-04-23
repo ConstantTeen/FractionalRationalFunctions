@@ -19,21 +19,26 @@ void test_List(){
     Polynomial p(arr,3);
     Quotient q(p1,p2);
     Quotient qq(p1,p);
-    Function *fp1 = &p1;
-    Function *fp2 = &p2;
-    Function *fq = &q;
-    Function *fqq = &qq;
-
+//    Function *fp1 = &p1;
+//    Function *fp2 = &p2;
+//    Function *fq = &q;
+//    Function *fqq = &qq;
+    auto fp1 = make_shared<Function*>(&p1);
+    auto fp2 = make_shared<Function*>(&p2);
+    auto fq = make_shared<Function*>(&q);
+    auto fqq = make_shared<Function*>(&qq);
     List list;
 //!
 //!   добавляю элемент и проверяю добавился ли
 //!
     list.addElement(fp1);
+    list.showEverything();
+
     int errorCode = 0;
     double value = list.findValue(0.0,1,errorCode);
 
     if(value != 1){
-        cerr << "test: List: wrong way of function value calculating" << endl;
+        cerr << "test: List: wrong way of function value calculating. Given value: " << value << endl;
         exit(1);
     }
     else if(errorCode == -1){
@@ -61,7 +66,7 @@ void test_List(){
 //!   и ещё раз
 //!
     list.addElement(fqq);
-    list.findValue(0.0,2,errorCode);
+    list.findValue(0.0,3,errorCode);
 
     if(errorCode != 1){
         cerr << "test: List: wrong way of data storage" << endl;

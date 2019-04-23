@@ -161,3 +161,4 @@ bool Polynomial::operator==(Polynomial const & p) {
 Polynomial* Polynomial::clone() const {
     return new Polynomial(*this);
 }
+

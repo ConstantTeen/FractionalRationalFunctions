@@ -4,8 +4,9 @@
 
 #include "List.h"
 
-void List::addElement(Function *function){
-    this->biList.push_back(function);
+void List::addElement(shared_ptr<Function*> &function){
+    this->biList.push_back(function); //! добавляем функцию в список
+    count.push_back_id();             //! присваиваем ей индекс
 }
 
 void List::showEverything(){
@@ -14,54 +15,49 @@ void List::showEverything(){
         return;
     }
 
-    unsigned int currentIndex = 1;
     string str;
+    unsigned int order = 0;
 
     cout << endl << "----All list of functions----" << endl << endl;
 
     for (const auto &item : biList) {
-        item->getFunctionAppearance(str);
-        cout << "Index: " << currentIndex++ << endl;
+
+        (*item)->getFunctionAppearance(str);
+        cout << "Index: " << count.get_id(order) << endl;
         cout << str << endl;
+        order++;
     }
 }
 
 int List::deleteElement(unsigned int index){
-    if(biList.size() < index || index == 0) return 1;
+    unsigned int order = 0;
 
-    unsigned int currentIndex = 1;
+    for (auto iter = biList.begin(); iter != biList.end(); ++iter,++order) {
+        if( count.get_id(order) == (int)index){ //! если индекс тот что нужен
+            biList.erase(iter);                 //! удаляем элемент списка
+            count.erase_id(index);              //! удаляем соответствующий индекс
 
-    for (auto iter = biList.begin(); iter != biList.end(); ++iter,++currentIndex) {
-        if(currentIndex == index){
-            biList.erase(iter);
             return 0;
         }
     }
+
     return -1;
 }
 
 double List::findValue(double x, unsigned int functionIndex, int& errorCode){
-//!
-//!   функции с данным индексом нет
-//!
-    if(biList.size() < functionIndex){
-        errorCode = -1;
-        return -123;
-    }
-
-    unsigned int currentIndex = 1;
     double value;
+    unsigned int order = 0;
 
     for (const auto &item : biList) {
-        if(currentIndex == functionIndex){
-            value = item->getFunctionValue(x,errorCode);
+        if( count.get_id(order) == (int)functionIndex ){
+            value = (*item)->getFunctionValue(x,errorCode);
 
             //! если функция не определена
-            if(errorCode == 1) return -123;
+            if(errorCode == 1) return -122;
 
             return value;
         }
-        currentIndex++;
+        order++;
     }
 //!
 //!    по каким-то причинам функции с данным
@@ -80,22 +76,21 @@ void List::undefinedFunctionsSet(double x){
     int errorCode = 0;
     string str;
     bool flag = false;
-    unsigned int currentIndex = 1;
+    unsigned int order = 0;
 
     cout << endl << "----All functions undefined in " << x << "----" << endl << endl;
 
     for (const auto &item : biList) {
-        item->getFunctionValue(x,errorCode);
+        (*item)->getFunctionValue(x,errorCode);
 
         if(errorCode == 1){
-            flag = true;
-            item->getFunctionAppearance(str);
+            flag = true;    //! нашлась хотя бы одна фукнция неопределённая в х
+            (*item)->getFunctionAppearance(str);
 
-            cout << "Index: " << currentIndex << endl;
+            cout << "Index: " << count.get_id(order) << endl;
             cout << str << endl;
-
-            currentIndex++;
         }
+        order++;
     }
     if(!flag) cout << endl << "    There are no such functions    " << endl << endl;
 

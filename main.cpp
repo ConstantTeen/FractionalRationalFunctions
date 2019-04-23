@@ -7,7 +7,7 @@
 
 using namespace std;
 //!
-//! для водсчёта времени работы программы
+//! для подсчёта времени работы программы
 //!
 static inline unsigned long long int tick()
 {

@@ -10,6 +10,7 @@
 #include <string>
 
 #include"Function.h"
+#include "Counter.h"
 
 using namespace std;
 
@@ -18,7 +19,7 @@ public:
 //!
 //!    добавляет дробно-рациональную функцию в список
 //!
-    void addElement(Function *function);
+    void addElement(shared_ptr<Function*> &function);
 //!
 //!   печатает весь существующий список функций
 //!
@@ -42,7 +43,8 @@ public:
     void undefinedFunctionsSet(double x);
 
 private:
-    list< Function * > biList;
+    list< shared_ptr<Function*> > biList;   //! список функций
+    Counter count;                          //! список индексов, соответсвующих функциям из списка
 };
 
 
