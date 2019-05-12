@@ -42,6 +42,10 @@ public:
 //!
     void undefinedFunctionsSet(double x);
 
+    const list< shared_ptr<Function*> >& getList() const {
+        return biList;
+    }
+
 private:
     list< shared_ptr<Function*> > biList;   //! список функций
     Counter count;                          //! список индексов, соответсвующих функциям из списка

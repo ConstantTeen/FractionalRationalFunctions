@@ -31,6 +31,10 @@ public:
 //!    присваиваие запрещено
 //!
     Function& operator=(Function const&) = delete;
+//!
+//!    возвращает тип функции
+//!
+    virtual char getType() const = 0;
 };
 
 

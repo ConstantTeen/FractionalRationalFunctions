@@ -45,9 +45,11 @@ public:
 //!
     bool operator==(Quotient const&);
     bool operator!=(Quotient const&);
+    char getType()const override {return type;}
 private:
     shared_ptr<Polynomial> numerator;
     shared_ptr<Polynomial> denominator;
+    char type = 'Q';
 };
 
 

@@ -13,6 +13,7 @@
 
 class Polynomial: public Function{
 private:
+    char type = 'P';
 //!
 //!    степень многочлена
 //!
@@ -62,6 +63,7 @@ public:
 //!
     bool operator!=(Polynomial const&);
     bool operator==(Polynomial const &);
+    char getType()const override {return type;}
 };
 
 

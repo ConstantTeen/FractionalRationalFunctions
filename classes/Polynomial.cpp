@@ -89,7 +89,7 @@ int Polynomial::getFunctionAppearance(string &buffer)const{
 //!    если все коэффициенты = 0
 //!
     if(i == degree + 1) {
-        buffer = "0";
+        buffer = '0';
         return 0;
     }
 //!
