@@ -11,12 +11,7 @@ void test_c_interface(){
 
     List* pool = create_list();
     double arr[4] = {1,2,34,3};
-//!
-//!    тут утчеки памяти!
-//!    указатели на динамически выделенную память
-//!    лежат в shared_ptr поэтому при чистке shared_ptr
-//!    память не освобождается, а удаляется только указатель на эту память
-//!
+
     add_polynomial(pool, arr, 3);
     add_quotient(pool, arr, 3, arr, 3);
     pool->showEverything();
@@ -30,9 +25,9 @@ void test_c_interface(){
     char* str;
     get_appearance(go[1],&str);
     cout<<str<<endl;
-
     cout << get_type(go[1])<<endl;
 
+    free_string(str);
     free_objects(go);
     delete_list(pool);
 

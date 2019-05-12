@@ -19,7 +19,7 @@ public:
 //!
 //!    добавляет дробно-рациональную функцию в список
 //!
-    void addElement(shared_ptr<Function*> &function);
+    void addElement(shared_ptr<Function> &function);
 //!
 //!   печатает весь существующий список функций
 //!
@@ -42,12 +42,12 @@ public:
 //!
     void undefinedFunctionsSet(double x);
 
-    const list< shared_ptr<Function*> >& getList() const {
+    const list< shared_ptr<Function> >& getList() const {
         return biList;
     }
 
 private:
-    list< shared_ptr<Function*> > biList;   //! список функций
+    list< shared_ptr<Function> > biList;   //! список функций
     Counter count;                          //! список индексов, соответсвующих функциям из списка
 };
 

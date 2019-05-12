@@ -61,6 +61,11 @@ void get_appearance(Function *f, char **str);
  * @return тип 'Q' или 'P'
  */
 char get_type(Function *f);
+/**
+ * Выделяет память выделенную под строку
+ * @param str
+ */
+void free_string(char* str);
 
 }
 

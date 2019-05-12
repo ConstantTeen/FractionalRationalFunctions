@@ -19,7 +19,7 @@ void delete_list(List* l){
  */
 void add_polynomial(List *l, double *coefficients, unsigned int degree){
     auto p = new Polynomial(coefficients,degree);
-    auto tmp = make_shared<Function*>(p);
+    auto tmp = shared_ptr<Function>(p);
     l->addElement(tmp);
 }
 /**
@@ -31,10 +31,9 @@ void add_polynomial(List *l, double *coefficients, unsigned int degree){
  * @param denDegree степень знаменателя
  */
 void add_quotient(List *l, double *numCoef, unsigned int numDegree, double *denCoef, unsigned int denDegree){
-    auto num = new Polynomial(numCoef,numDegree);
-    auto den = new Polynomial(denCoef,denDegree);
-    auto q = new Quotient(*num,*den);
-    auto tmp = make_shared<Function*>(q);
+    auto num = make_shared<Polynomial>(numCoef,numDegree);
+    auto den = make_shared<Polynomial>(denCoef,denDegree);
+    auto tmp = shared_ptr<Function>(new Quotient(*num,*den));
     l->addElement(tmp);
 }
 /**
@@ -52,7 +51,7 @@ void get_objects(List *l, Function ***objs, int *obj_num){
 //!
     int i = 0;
     for (auto it = objs_list.begin(); it != objs_list.end(); ++it, ++i) {
-        (*objs)[i] = *( it->get() );
+        (*objs)[i] = it->get();
     }
 }
 
@@ -88,4 +87,11 @@ void get_appearance(Function *f, char** str){
  */
 char get_type(Function *f){
     return f->getType();
+}
+/**
+ * Выделяет память выделенную под строку
+ * @param str
+ */
+void free_string(char* str){
+    delete[] str;
 }

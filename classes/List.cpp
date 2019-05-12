@@ -4,7 +4,7 @@
 
 #include "List.h"
 
-void List::addElement(shared_ptr<Function*> &function){
+void List::addElement(shared_ptr<Function> &function){
     this->biList.push_back(function); //! добавляем функцию в список
     count.push_back_id();             //! присваиваем ей индекс
 }
@@ -22,7 +22,7 @@ void List::showEverything(){
 
     for (const auto &item : biList) {
 
-        (*item)->getFunctionAppearance(str);
+        item->getFunctionAppearance(str);
         cout << "Index: " << count.get_id(order) << endl;
         cout << str << endl;
         order++;
@@ -50,7 +50,7 @@ double List::findValue(double x, unsigned int functionIndex, int& errorCode){
 
     for (const auto &item : biList) {
         if( count.get_id(order) == (int)functionIndex ){
-            value = (*item)->getFunctionValue(x,errorCode);
+            value = item->getFunctionValue(x,errorCode);
 
             //! если функция не определена
             if(errorCode == 1) return -122;
@@ -81,11 +81,11 @@ void List::undefinedFunctionsSet(double x){
     cout << endl << "----All functions undefined in " << x << "----" << endl << endl;
 
     for (const auto &item : biList) {
-        (*item)->getFunctionValue(x,errorCode);
+        item->getFunctionValue(x,errorCode);
 
         if(errorCode == 1){
             flag = true;    //! нашлась хотя бы одна фукнция неопределённая в х
-            (*item)->getFunctionAppearance(str);
+            item->getFunctionAppearance(str);
 
             cout << "Index: " << count.get_id(order) << endl;
             cout << str << endl;

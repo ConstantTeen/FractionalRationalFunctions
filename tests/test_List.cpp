@@ -23,10 +23,10 @@ void test_List(){
 //    Function *fp2 = &p2;
 //    Function *fq = &q;
 //    Function *fqq = &qq;
-    auto fp1 = make_shared<Function*>(&p1);
-    auto fp2 = make_shared<Function*>(&p2);
-    auto fq = make_shared<Function*>(&q);
-    auto fqq = make_shared<Function*>(&qq);
+    shared_ptr<Function> fp1 = make_shared<Polynomial>(p1);
+    shared_ptr<Function> fp2 = make_shared<Polynomial>(p2);
+    shared_ptr<Function> fq  = make_shared<Quotient>(q);
+    shared_ptr<Function> fqq = make_shared<Quotient>(qq);
     List list;
 //!
 //!   добавляю элемент и проверяю добавился ли
@@ -48,7 +48,7 @@ void test_List(){
 //!
 //!   проверка правильности удаления функций
 //!
-    if( list.deleteElement(1) == 1 ){
+    if( list.deleteElement(1) != 0 ){
         cerr << "test: List: wrong way of indexes storage" << endl;
         exit(1);
     }

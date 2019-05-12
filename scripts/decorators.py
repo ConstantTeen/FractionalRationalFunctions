@@ -49,6 +49,11 @@ c_lib.get_type.argtypes = [
 ]
 c_lib.get_appearance.restype = c_char
 
+c_lib.free_string.argtypes = [
+    POINTER(c_char)
+]
+c_lib.get_appearance.restype = None
+
 
 def create_pool():
     """Возвращает 'указатель' на список функций"""
@@ -102,9 +107,12 @@ def get_val(fun, x):
 
 def get_app(fun):
     """Возвращает строковое представление функции"""
-    s = POINTER(c_char)()
-    c_lib.get_appearance(fun, byref(s))
-    return cast(s, c_char_p).value.decode('utf-8')
+    cstr = POINTER(c_char)()
+    c_lib.get_appearance(fun, byref(cstr))
+    s = cast(cstr, c_char_p).value.decode('utf-8')
+    c_lib.free_string(cstr)  # Освобождаю строку
+
+    return s
 
 
 def get_ftype(fun):
