@@ -4,6 +4,7 @@
 #include <vector>
 #include <fstream>
 
+
 //#include "tests/test_Pool.h"
 //#include "tests/test_Polynomial.h"
 //#include "tests/test_QuotientOfPolynomials.h"
@@ -39,8 +40,8 @@ int main() {
 // //    test_Pool();
 //    test_List();
 //    cout << "All tests have been passed successfully." << endl;
-
     sayHi();
+
     return 0;
 }
 
@@ -52,6 +53,9 @@ void sayHi(){
     string indexesStr;
     int code;
     double x;
+    int N = 100;
+
+    list.filling(N);
 
     while(true){
         cout << endl << "Выберите действие:\n"
@@ -200,8 +204,8 @@ int parseAndCount(string& file,string& str,double x,Pool& list){
         for (int i = a; i <= b; ++i) {
             double value = list.findValue(x,i,errorCode);
 
-            if(errorCode == 1) out << i << "inf" << endl;
-            else if(errorCode == 0) out << i << value << endl;
+            if(errorCode == 1) out << i << " inf" << endl;
+            else if(errorCode == 0) out << i << " " << value << endl;
         }
     }
 
@@ -245,8 +249,8 @@ int parseAndDelete(string &str,Pool &list){
         return 0;
     }
 
-    int a = atoi(tmp.substr(0, next2).c_str());
-    int b = atoi(tmp.substr(next2 + 1).c_str());
+    int a = strtol(tmp.substr(0, next2).c_str(), nullptr, 10);
+    int b = strtol(tmp.substr(next2 + 1).c_str(), nullptr, 10);
 
     for (int i = a; i <= b; ++i) {
         list.deleteElement(i);
@@ -331,3 +335,4 @@ struct pol* parsePolynomial(char *str){
 
     return s;
 }
+

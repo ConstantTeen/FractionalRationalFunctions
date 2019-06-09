@@ -181,3 +181,23 @@ void Pool::undefinedFunctionsSet(double x){
 
     cout << endl << "----The end----" << endl;
 }
+
+void Pool::filling(int number) {
+    int i = 0;
+    for(; i < number/2; i++){
+        double arr[4] = {(double)i, (double)i/2, (double)i/3, (double)i};
+        Polynomial p(arr,3);
+
+        this->addElement(&p);
+    }
+
+    for(; i < number; i++){
+        double arr[4] = {(double)i, (double)i/2, (double)i/3, (double)i};
+        Polynomial p(arr,3);
+        double arr2[3] = {(double)i/2, (double)i/3, (double)i*2};
+        Polynomial p2(arr2,2);
+        QuotientOfPolynomials q(p,p2);
+
+        this->addElement(&q);
+    }
+}

@@ -48,6 +48,8 @@ public:
 //!
     void undefinedFunctionsSet(double x);
 
+    void filling(int number);
+
 
 private:
     unsigned int counter = 1;//! хранит последний индекс
